@@ -1,5 +1,7 @@
 package easy
 
+import "strings"
+
 /*
 58. Length of Last Word
 Easy
@@ -36,7 +38,6 @@ Constraints:
 s consists of only English letters and spaces ' '.
 There will be at least one word in s.
 */
-
 func Length_Of_Last_Word(s string) int {
 	n := len(s)
 	result := 0
@@ -49,4 +50,13 @@ func Length_Of_Last_Word(s string) int {
 		}
 	}
 	return result
+}
+
+func reverseWord(s string) string {
+	revStrings := strings.Split(s, " ")
+
+	for i, j := 0, len(revStrings)-1; i < j; i, j = i+1, j-1 {
+		revStrings[i], revStrings[j] = revStrings[j], revStrings[i]
+	}
+	return strings.Join(revStrings, " ")
 }
