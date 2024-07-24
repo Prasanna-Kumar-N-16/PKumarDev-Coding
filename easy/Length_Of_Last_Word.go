@@ -69,5 +69,30 @@ substring
  in s
 */
 func longestPalindrome(s string) string {
-	return ""
+	if len(s) == 1 {
+		return s
+	}
+	maxLen := 0
+	res := ""
+	for i := 0; i < len(s); i++ {
+		for j := i; j < len(s); j++ {
+			subStr := s[i:j]
+			if isPalindrome(subStr) {
+				if len(subStr) > maxLen {
+					res = subStr
+					maxLen = len(subStr)
+				}
+			}
+		}
+	}
+	return res
+}
+
+func isPalindrome(s string) bool {
+	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+		if s[i] != s[j] {
+			return false
+		}
+	}
+	return true
 }
