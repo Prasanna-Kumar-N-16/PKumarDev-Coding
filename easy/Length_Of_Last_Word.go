@@ -60,3 +60,14 @@ func reverseWord(s string) string {
 	}
 	return strings.Join(revStrings, " ")
 }
+
+/*
+Given a string s, return the longest
+palindromic
+
+substring
+ in s
+*/
+func longestPalindrome(s string) string {
+	return ""
+}

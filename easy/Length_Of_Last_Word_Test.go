@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_Length_Of_Last_Word(t *testing.T) {
+func TestLength_Of_Last_Word(t *testing.T) {
 	input1 := "Hello World"
 	input2 := "   fly me   to   the moon  "
 	input3 := "luffy is still joyboy"
@@ -21,4 +21,11 @@ func TestReverseWord(t *testing.T) {
 	fmt.Println(reverseWord(input1))
 	fmt.Println(reverseWord(input2))
 	fmt.Println(reverseWord(input3))
+}
+
+func TestReverseWord(t *testing.T) {
+	input1 := "babad"
+	input2 := "cbbd"
+	fmt.Println(longestPalindrome(input1))
+	fmt.Println(longestPalindrome(input2))
 }
