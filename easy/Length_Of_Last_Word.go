@@ -1,6 +1,9 @@
 package easy
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 /*
 58. Length of Last Word
@@ -11,9 +14,8 @@ Given a string s consisting of words and spaces, return the length of the last w
 
 A word is a maximal
 substring
- consisting of non-space characters only.
 
-
+	consisting of non-space characters only.
 
 Example 1:
 
@@ -30,7 +32,6 @@ Example 3:
 Input: s = "luffy is still joyboy"
 Output: 6
 Explanation: The last word is "joyboy" with length 6.
-
 
 Constraints:
 
@@ -66,7 +67,8 @@ Given a string s, return the longest
 palindromic
 
 substring
- in s
+
+	in s
 */
 func longestPalindrome(s string) string {
 	if len(s) == 1 {
@@ -141,4 +143,34 @@ func checkInclusion(s1 string, s2 string) bool {
 		}
 	}
 	return false
+}
+
+/
+func getLucky(s string, k int) int {
+	str := convertToStringNum(s)
+	ans := repeat(str, k)
+	return ans
+}
+
+func convertToStringNum(s string) string {
+	strNum := ""
+	for _, v := range s {
+		num := strconv.Itoa(int(v - 'a' + 1))
+		strNum += num
+	}
+	return strNum
+}
+
+func repeat(s string, k int) int {
+	ans := 0
+	for i := 0; i < k; i++ {
+		sum := 0
+		for _, v := range s {
+			num, _ := strconv.Atoi(string(v))
+			sum += num
+		}
+		s = strconv.Itoa(sum)
+		ans = sum
+	}
+	return ans
 }
