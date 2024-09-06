@@ -145,7 +145,7 @@ func checkInclusion(s1 string, s2 string) bool {
 	return false
 }
 
-/
+// 1945. Sum of Digits of String After Convert
 func getLucky(s string, k int) int {
 	str := convertToStringNum(s)
 	ans := repeat(str, k)
