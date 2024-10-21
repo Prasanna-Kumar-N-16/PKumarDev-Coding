@@ -30,23 +30,21 @@ Explanation: The array represents the integer 9.
 Incrementing by one gives 9 + 1 = 10.
 Thus, the result should be [1,0].
 */
-
-func plusOne(digits []int) []int {
-	if len(digits) == 0 {
-		return digits
-	}
-	val := digits[len(digits)-1] + 1
-	if val < 9 {
-		digits[len(digits)-1] = val
-		return digits
-	}
+func PlusOne(digits []int) []int {
 	for i := len(digits) - 1; i >= 0; i-- {
-		digits[i] = digits[i] - 9
-		val = val - 9
-	}
-	if val > 0 {
-		digits = append([]int{val}, digits...)
-	}
-	return digits
+		// Increment the current digit by 1
+		digits[i]++
 
+		// If the digit becomes less than 10, no further carry is needed
+		if digits[i] < 10 {
+			return digits
+		}
+
+		// If the digit is 10, set it to 0 and carry over to the next
+		digits[i] = 0
+	}
+
+	// If the loop completes, that means there was a carry from the most significant digit,
+	// so we need to add an additional digit at the start (i.e., a leading 1).
+	return append([]int{1}, digits...)
 }
