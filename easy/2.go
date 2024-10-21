@@ -22,10 +22,3 @@ func TestReverseWord(t *testing.T) {
 	fmt.Println(reverseWord(input2))
 	fmt.Println(reverseWord(input3))
 }
-
-func TestReverseWord(t *testing.T) {
-	input1 := "babad"
-	input2 := "cbbd"
-	fmt.Println(longestPalindrome(input1))
-	fmt.Println(longestPalindrome(input2))
-}
