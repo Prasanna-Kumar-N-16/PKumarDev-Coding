@@ -75,3 +75,40 @@ Input: dividend = 7, divisor = -3
 Output: -2
 Explanation: 7/-3 = -2.33333.. which is truncated to -2.
 */
+
+func divide(dividend int, divisor int) int {
+    // Handle edge case for overflow
+    if dividend == math.MinInt32 && divisor == -1 {
+        return math.MaxInt32
+    }
+
+    // Determine the sign of the result
+    negative := (dividend < 0) != (divisor < 0)
+
+    // Work with positive values for dividend and divisor
+    dividendAbs := abs(dividend)
+    divisorAbs := abs(divisor)
+    
+    // Initialize quotient
+    quotient := 0
+
+    // Use bit manipulation to find the quotient
+    for dividendAbs >= divisorAbs {
+        tempDivisor, multiple := divisorAbs, 1
+        while dividendAbs >= (tempDivisor << 1) {
+            tempDivisor <<= 1
+            multiple <<= 1
+        }
+        dividendAbs -= tempDivisor
+        quotient += multiple
+    }
+
+    // Adjust the sign of the quotient
+    if negative {
+        quotient = -quotient
+    }
+
+    return quotient
+}
+
+
