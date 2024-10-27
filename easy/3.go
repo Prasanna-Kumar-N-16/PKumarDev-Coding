@@ -1,5 +1,7 @@
 package easy
 
+import "math"
+
 /*
 
 You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
@@ -77,38 +79,44 @@ Explanation: 7/-3 = -2.33333.. which is truncated to -2.
 */
 
 func divide(dividend int, divisor int) int {
-    // Handle edge case for overflow
-    if dividend == math.MinInt32 && divisor == -1 {
-        return math.MaxInt32
-    }
+	// Handle edge case for overflow
+	if dividend == math.MinInt32 && divisor == -1 {
+		return math.MaxInt32
+	}
 
-    // Determine the sign of the result
-    negative := (dividend < 0) != (divisor < 0)
+	// Determine the sign of the result
+	negative := (dividend < 0) != (divisor < 0)
 
-    // Work with positive values for dividend and divisor
-    dividendAbs := abs(dividend)
-    divisorAbs := abs(divisor)
-    
-    // Initialize quotient
-    quotient := 0
+	// Work with positive values for dividend and divisor
+	dividendAbs := abs(dividend)
+	divisorAbs := abs(divisor)
 
-    // Use bit manipulation to find the quotient
-    for dividendAbs >= divisorAbs {
-        tempDivisor, multiple := divisorAbs, 1
-        while dividendAbs >= (tempDivisor << 1) {
-            tempDivisor <<= 1
-            multiple <<= 1
-        }
-        dividendAbs -= tempDivisor
-        quotient += multiple
-    }
+	// Initialize quotient
+	quotient := 0
 
-    // Adjust the sign of the quotient
-    if negative {
-        quotient = -quotient
-    }
+	// Use bit manipulation to find the quotient
+	for dividendAbs >= divisorAbs {
+		tempDivisor, multiple := divisorAbs, 1
+		for dividendAbs >= (tempDivisor << 1) {
+			tempDivisor <<= 1
+			multiple <<= 1
+		}
+		dividendAbs -= tempDivisor
+		quotient += multiple
+	}
 
-    return quotient
+	// Adjust the sign of the quotient
+	if negative {
+		quotient = -quotient
+	}
+
+	return quotient
 }
 
-
+// Helper function to calculate absolute value
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
