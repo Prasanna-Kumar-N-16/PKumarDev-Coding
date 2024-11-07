@@ -140,6 +140,9 @@ Example 2:
 Input: numRows = 1
 Output: [[1]]
 */
+func generate(numRows int) [][]int {
+	return fill(generateBase(numRows))
+}
 
 func generateBase(numRows int) [][]int {
 	sol := make([][]int, numRows)
