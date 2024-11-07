@@ -140,3 +140,13 @@ Example 2:
 Input: numRows = 1
 Output: [[1]]
 */
+
+func fill(base [][]int) [][]int {
+	numRows := len(base)
+	for row := 1; row < numRows; row++ {
+		for col := 1; col < len(base[row])-1; col++ {
+			base[row][col] = base[row-1][col-1] + base[row-1][col]
+		}
+	}
+	return base
+}
