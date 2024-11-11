@@ -69,3 +69,10 @@ func (this *MyStack) Top() int {
 	}
 	return this.Data[this.Size-1]
 }
+
+func (this *MyStack) Empty() bool {
+	if this.Size == 0 {
+		return true
+	}
+	return false
+}
