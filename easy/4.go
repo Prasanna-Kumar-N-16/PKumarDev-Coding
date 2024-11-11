@@ -62,3 +62,10 @@ func (this *MyStack) Pop() int {
 	this.Size = this.Size - 1
 	return res
 }
+
+func (this *MyStack) Top() int {
+	if len(this.Data) == 0 {
+		return 0
+	}
+	return this.Data[this.Size-1]
+}
