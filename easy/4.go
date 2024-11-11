@@ -36,3 +36,14 @@ myStack.top(); // return 2
 myStack.pop(); // return 2
 myStack.empty(); // return False
 */
+
+type MyStack struct {
+	Data []int
+	Size int
+}
+
+func Constructor() MyStack {
+	return MyStack{
+		Data: make([]int, 0),
+	}
+}
