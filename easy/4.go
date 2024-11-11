@@ -47,3 +47,18 @@ func Constructor() MyStack {
 		Data: make([]int, 0),
 	}
 }
+
+func (this *MyStack) Push(x int) {
+	this.Data = append(this.Data, x)
+	this.Size = len(this.Data)
+}
+
+func (this *MyStack) Pop() int {
+	if len(this.Data) == 0 {
+		return 0
+	}
+	res := this.Data[this.Size-1]
+	this.Data = this.Data[this.Size-1:]
+	this.Size = this.Size - 1
+	return res
+}
